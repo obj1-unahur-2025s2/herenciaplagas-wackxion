@@ -1,5 +1,9 @@
+import plagas.*
+
+
 class Elementos{
   method esBuenoParaHumanos()
+  method recibirAtaque(unaPlaga)
 }
 
 class Hogar inherits Elementos {
@@ -9,6 +13,7 @@ class Hogar inherits Elementos {
   method nivelDeConfort() = nivelDeConfort
   method nivelDeMugre() = nivelDeMugre
   override method esBuenoParaHumanos() = self.nivelDeMugre() <= (self.nivelDeConfort() / 2)
+  override method recibirAtaque(unaPlaga) = unaPlaga.nivel 
 }
 
 class Huerta inherits Elementos {
@@ -24,6 +29,8 @@ class Huerta inherits Elementos {
 
 class Mascota inherits Elementos {
   const nivelDeSalud 
+
+  method saludable() = nivelDeSalud
   method nivelDeSalud() = nivelDeSalud
   override method esBuenoParaHumanos() = nivelDeSalud > 250
 }
